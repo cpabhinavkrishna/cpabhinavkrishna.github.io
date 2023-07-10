@@ -1,3 +1,3 @@
-let a = 10;
+let a = 12;
 let b = 55;
 let r = a + b ;
