@@ -3,15 +3,26 @@ let snake = [
   { x: 11, y: 10 },
 ];
 //game loop which updates every frame
+let gameloop;
 function main() {
   update();
   draw();
   food();
-  setTimeout(() => {
+  gameloop= setTimeout(() => {
     window.requestAnimationFrame(main);
   }, 100);
 }
-window.requestAnimationFrame(main);
+let startBtn = document.querySelector('button');
+startBtn.addEventListener('click',()=>{
+  if(startBtn.textContent==='Start'){
+    window.requestAnimationFrame(main);
+    startBtn.textContent="Pause"
+  }else{
+    startBtn.textContent="Start"
+    clearTimeout(gameloop);
+  }  
+})
+
 let error = null;
 function update() {
   let temp = JSON.parse(JSON.stringify(snake));
