@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        background-color: cadetblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #container {
+        width: 500px;
+        height: 500px;
+      }
+      #board {
+        width: inherit;
+        height: inherit;
+        background-color: black;
+        display: grid;
+        grid-template-columns: repeat(20, 1fr);
+        grid-template-rows: repeat(20, 1fr);
+      }
+
+      .snake {
+        background-color: rgb(234, 60, 13);
+        border-radius: 8px;
+      }
+      .food {
+        background-color: rgb(3, 129, 41);
+        border-radius: 50%;
+      }
+    </style>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="board">
+        <!-- <div class="snake"></div>
+    <div class="food"></div> -->
+      </div>
+    </div>
+  </body>
+</html>
