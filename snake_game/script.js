@@ -61,6 +61,58 @@ window.addEventListener("keydown", (e) => {
       break;
   }
 });
+//touch controls
+let container = document.getElementById("container");
+let tstartX, tstartY, tendX, tendY;
+
+container.addEventListener("touchstart", (e) => {
+  tstartX = e.touches[0].clientX;
+  tstartY = e.touches[0].clientY;
+});
+container.addEventListener("touchend", (e) => {
+  tendX = e.changedTouches[0].clientX;
+  tendY = e.changedTouches[0].clientY;
+  let deltaX = tstartX - tendX;
+  let deltaY = tstartY - tendY;
+  let AbsoluteX = Math.abs(deltaX);
+  let AbsoluteY = Math.abs(deltaY);
+  if (
+    deltaY < -50 &&
+    AbsoluteX < AbsoluteY &&
+    prevKey != "Up" &&
+    prevKey != "Down"
+  ) {
+    prevKey = "Up";
+    navigate = { x: 1, y: 0 };
+  }
+  if (
+    deltaY > 50 &&
+    AbsoluteX < AbsoluteY &&
+    prevKey != "Up" &&
+    prevKey != "Down"
+  ) {
+    prevKey = "Down";
+    navigate = { x: -1, y: 0 };
+  }
+  if (
+    deltaX > 50 &&
+    AbsoluteX > AbsoluteY &&
+    prevKey != "Left" &&
+    prevKey != "Right"
+  ) {
+    prevKey = "Left";
+    navigate = { x: 0, y: -1 };
+  }
+  if (
+    deltaX < -50 &&
+    AbsoluteX > AbsoluteY &&
+    prevKey != "Left" &&
+    prevKey != "Right"
+  ) {
+    prevKey = "Right";
+    navigate = { x: 0, y: 1 };
+  }
+});
 
 function keys() {
   return navigate;
