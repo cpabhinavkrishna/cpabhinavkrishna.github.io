@@ -68,8 +68,13 @@ window.addEventListener("keydown", (e) => {
     case e.key == "ArrowRight" && prevKey != "Left" && prevKey != "Right":
       prevKey = "Right";
       navigate = { x: 0, y: 1 };
-
       break;
+   default:
+    if(startBtn.textContent=='Start'){
+      startBtn.textContent="Pause"
+      window.requestAnimationFrame(main);
+  }
+       
   }
 });
 //touch controls
@@ -87,6 +92,10 @@ container.addEventListener("touchend", (e) => {
   let deltaY = tstartY - tendY;
   let AbsoluteX = Math.abs(deltaX);
   let AbsoluteY = Math.abs(deltaY);
+  if(startBtn.textContent=='Start'){
+    startBtn.textContent="Pause"
+    window.requestAnimationFrame(main);
+}
   if (
     deltaY < -50 &&
     AbsoluteX < AbsoluteY &&
@@ -123,6 +132,7 @@ container.addEventListener("touchend", (e) => {
     prevKey = "Right";
     navigate = { x: 0, y: 1 };
   }
+  
 });
 
 function keys() {
